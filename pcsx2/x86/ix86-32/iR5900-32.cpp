@@ -1421,6 +1421,15 @@ void recompileNextInstruction(int delayslot)
 
 	cpuRegs.code = *(int*)s_pCode;
 
+	if (cpuRegs.code == 0x0280202d)
+	{
+		if (*(int*)PSM(pc + 0x4) == 0x3c0140d0 && *(int*)PSM(pc + 0x8) == 0x44810800 && *(int*)PSM(pc + 0x10) == 0x46000836)
+		{
+			DevCon.Warning("Fixing RC2 Mega Turret at PC %x", cpuRegs.pc);
+			memWrite32(pc + 0x4, 0x3c013f80);
+		}
+	}
+
 	if (!delayslot)
 	{
 		pc += 4;
