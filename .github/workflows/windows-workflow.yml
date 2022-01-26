@@ -5,12 +5,12 @@ name: 🖥️ Windows Builds
 on:
   push:
     branches:
-      - master
+      - rc2gamefix
     tags:
       - v*
   pull_request:
     branches:
-      - master
+      - rc2gamefix
     paths-ignore:
       - '**/*.md'
       - '.clang-format'
